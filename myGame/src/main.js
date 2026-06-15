@@ -2,7 +2,10 @@ import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
 
 kaplay();
 
-setGravity(1600);
+document.getElementById("gravity").addEventListener("input", (event) => {
+    const gravityValue = event.target.value;
+    setGravity(163*gravityValue);
+});
 
 const ball = add (
         [
@@ -20,10 +23,14 @@ const floor = add (
             pos(0, 500),
             color(50, 50, 50),
             area(),
-            body({ isStatic: true, bounce: 1 })
+            body({ isStatic: true })
         ]
     );
 
 onKeyPress((key) => {
     debug.log(key);
+})
+
+onKeyPress((space) => {
+    ball.jump(700);
 })
