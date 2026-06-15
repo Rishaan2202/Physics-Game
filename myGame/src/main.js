@@ -31,6 +31,12 @@ onKeyPress((key) => {
     debug.log(key);
 })
 
+let jumpForceValue = 6;
+
+    document.getElementById("jumpForce").addEventListener("input", (event) => {
+        jumpForceValue = event.target.value;
+    });
+
 onKeyPress((space) => {
-    ball.jump(700);
+    ball.jump(jumpForceValue*100);
 })
