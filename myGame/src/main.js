@@ -13,7 +13,7 @@ const ball = add (
             pos(650, 150),
             color(50, 50, 50),
             area(),
-            body({ bounce: 0.7 })
+            body({ bouncePower: 600 })
         ]
     );
 
@@ -23,7 +23,8 @@ const floor = add (
             pos(0, 500),
             color(50, 50, 50),
             area(),
-            body({ isStatic: true })
+            body({ isStatic: true }),
+            "floor"
         ]
     );
 
@@ -31,12 +32,24 @@ onKeyPress((key) => {
     debug.log(key);
 })
 
-let jumpForceValue = 6;
+let jumpForceValue = 10;
 
     document.getElementById("jumpForce").addEventListener("input", (event) => {
         jumpForceValue = event.target.value;
     });
 
 onKeyPress((space) => {
-    ball.jump(jumpForceValue*100);
+    ball.jump(jumpForceValue*500);
+})
+
+document.getElementById("elasticity").addEventListener("input", (event) => {
+    const elasticityValue = event.target.value;
+    ball.bouncePower = 600 * elasticityValue;
+});
+
+ball.onCollide("floor", () => {
+    ball.jump(0.7*(ball.bouncePower))
+    if (ball.jump) {
+        ball.bouncePower *= 0.7;
+    }
 })
