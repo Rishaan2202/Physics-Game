@@ -2,6 +2,8 @@ import kaplay from "https://unpkg.com/kaplay@3001.0.19/dist/kaplay.mjs";
 
 kaplay();
 
+setGravity(163*9.8);
+
 document.getElementById("gravity").addEventListener("input", (event) => {
     const gravityValue = event.target.value;
     setGravity(163*gravityValue);
@@ -32,24 +34,29 @@ onKeyPress((key) => {
     debug.log(key);
 })
 
-let jumpForceValue = 10;
+let jumpForceValue = 5;
 
     document.getElementById("jumpForce").addEventListener("input", (event) => {
         jumpForceValue = event.target.value;
     });
 
 onKeyPress((space) => {
-    ball.jump(jumpForceValue*500);
+    ball.jump(jumpForceValue*200);
+    ball.bouncePower = jumpForceValue*250;
 })
+
+ball.bouncePower = 1500;
 
 document.getElementById("elasticity").addEventListener("input", (event) => {
     const elasticityValue = event.target.value;
-    ball.bouncePower = 600 * elasticityValue;
+    ball.bouncePower = 300 * elasticityValue;
 });
 
 ball.onCollide("floor", () => {
-    ball.jump(0.7*(ball.bouncePower))
+    ball.jump(0.6*(ball.bouncePower))
     if (ball.jump) {
         ball.bouncePower *= 0.7;
     }
 })
+
+
