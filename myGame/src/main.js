@@ -72,10 +72,8 @@ onMouseRelease(() => {
 onUpdate(() => {
     if (isDragging) {
         ball.moveTo(mousePos())
-        ball.isStatic = true
         setGravity(0)
     } else {
         setGravity(document.getElementById("gravity").value * 163)
-        ball.isStatic = false
     }
-})
+}) // Drag/Drop Feature
