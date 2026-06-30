@@ -4,7 +4,7 @@ This is a really great and my first ever project made with KAPLAY.js. idk how, b
 
 ## Live Demo
 
-This project is hosted on github pages and can be accessed from here: https://github.com/Rishaan2202/physics-game
+This project is hosted on github pages and can be accessed from here: https://Rishaan2202.github.io/physics-game
 
 ## Development
 
